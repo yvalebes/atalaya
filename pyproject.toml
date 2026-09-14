@@ -3,7 +3,7 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "forgekey"
+name = "atalaya"
 version = "1.0.0"
 description = "Generador de contraseñas y passphrases criptográficamente seguro, con GUI de consola industrial y CLI."
 readme = "README.md"
@@ -21,14 +21,14 @@ dependencies = [
 dev = ["pytest>=7.4"]
 
 [project.scripts]
-forgekey = "forgekey.cli.main:main"
-forgekey-gui = "forgekey.gui.app:run"
-forgekey-history = "forgekey.cli.history:history_cli"
+atalaya = "atalaya.cli.main:main"
+atalaya-gui = "atalaya.gui.app:run"
+atalaya-history = "atalaya.cli.history:history_cli"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-"forgekey.data" = ["*.txt"]
-"forgekey.gui" = ["*.qss"]
-"forgekey.gui.assets" = ["*.ttf"]
+"atalaya.data" = ["*.txt"]
+"atalaya.gui" = ["*.qss"]
+"atalaya.gui.assets" = ["*.ttf"]

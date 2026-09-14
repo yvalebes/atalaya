@@ -1,7 +1,7 @@
 import pytest
 
-from forgekey.core import charsets
-from forgekey.core.generator import (
+from atalaya.core import charsets
+from atalaya.core.generator import (
     BLOCK_SEPARATOR,
     BLOCK_SIZE,
     PASSWORD_LENGTH,

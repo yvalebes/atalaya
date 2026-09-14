@@ -1,6 +1,6 @@
 import pytest
 
-from forgekey.core.vault import Vault, VaultNotInitialized, WrongMasterPassword
+from atalaya.core.vault import Vault, VaultNotInitialized, WrongMasterPassword
 
 
 def _vault(tmp_path):

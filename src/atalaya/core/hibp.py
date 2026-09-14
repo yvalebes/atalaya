@@ -16,7 +16,7 @@ import urllib.request
 from dataclasses import dataclass
 
 _API_URL = "https://api.pwnedpasswords.com/range/{prefix}"
-_USER_AGENT = "forgekey-password-generator"
+_USER_AGENT = "atalaya-password-generator"
 
 
 @dataclass(frozen=True)

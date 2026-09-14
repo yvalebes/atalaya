@@ -1,4 +1,4 @@
-from forgekey.core.passphrase import generate_passphrase, load_wordlist, wordlist_size
+from atalaya.core.passphrase import generate_passphrase, load_wordlist, wordlist_size
 
 
 def test_wordlist_loads_expected_size():

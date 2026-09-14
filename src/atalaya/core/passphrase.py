@@ -16,7 +16,7 @@ _SEPARATOR_DEFAULT = "-"
 
 @lru_cache(maxsize=1)
 def load_wordlist() -> tuple[str, ...]:
-    raw = resources.files("forgekey.data").joinpath("eff_large_wordlist.txt").read_text(
+    raw = resources.files("atalaya.data").joinpath("eff_large_wordlist.txt").read_text(
         encoding="utf-8"
     )
     words = []

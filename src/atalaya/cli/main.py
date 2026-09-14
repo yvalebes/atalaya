@@ -1,4 +1,4 @@
-"""Command-line entry point for forgekey.
+"""Command-line entry point for atalaya.
 
 Strings here are kept accent-free on purpose: Windows terminals default to a
 non-UTF-8 codepage (cp1252/cp437), and accented characters piped through
@@ -12,9 +12,9 @@ import sys
 
 import click
 
-from forgekey.core import entropy, hibp, passphrase
-from forgekey.core.generator import PASSWORD_LENGTH, GeneratorOptions, generate_password
-from forgekey.core.vault import Vault, WrongMasterPassword
+from atalaya.core import entropy, hibp, passphrase
+from atalaya.core.generator import PASSWORD_LENGTH, GeneratorOptions, generate_password
+from atalaya.core.vault import Vault, WrongMasterPassword
 
 
 @click.command(context_settings={"help_option_names": ["-h", "--help"]})

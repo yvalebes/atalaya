@@ -26,8 +26,8 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
 _PBKDF2_ITERATIONS = 480_000
-_CHECK_PLAINTEXT = b"forgekey-vault-check-v1"
-DEFAULT_VAULT_PATH = Path.home() / ".forgekey" / "vault.json"
+_CHECK_PLAINTEXT = b"atalaya-vault-check-v1"
+DEFAULT_VAULT_PATH = Path.home() / ".atalaya" / "vault.json"
 
 
 class WrongMasterPassword(ValueError):

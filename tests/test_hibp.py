@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from forgekey.core import hibp
+from atalaya.core import hibp
 
 
 def _fake_response(body: str):
@@ -30,7 +30,7 @@ def test_only_prefix_leaves_the_machine():
         captured["url"] = request.full_url
         return _fake_response("0000000000000000000000000000000000:3\r\n")
 
-    with patch("forgekey.core.hibp.urllib.request.urlopen", side_effect=fake_urlopen):
+    with patch("atalaya.core.hibp.urllib.request.urlopen", side_effect=fake_urlopen):
         hibp.check_password("hunter2")
 
     digest = hibp._sha1_hex("hunter2")
@@ -43,7 +43,7 @@ def test_match_found_reports_count():
     suffix = digest[5:]
     body = f"{suffix}:3730471\r\nAAAAA:1\r\n"
 
-    with patch("forgekey.core.hibp.urllib.request.urlopen", return_value=_fake_response(body)):
+    with patch("atalaya.core.hibp.urllib.request.urlopen", return_value=_fake_response(body)):
         result = hibp.check_password("password")
 
     assert result.is_pwned
@@ -52,7 +52,7 @@ def test_match_found_reports_count():
 
 def test_no_match_reports_clean():
     body = "AAAAA:1\r\nBBBBB:2\r\n"
-    with patch("forgekey.core.hibp.urllib.request.urlopen", return_value=_fake_response(body)):
+    with patch("atalaya.core.hibp.urllib.request.urlopen", return_value=_fake_response(body)):
         result = hibp.check_password("a very unusual passphrase indeed")
     assert result.checked
     assert not result.is_pwned
@@ -62,7 +62,7 @@ def test_network_error_is_reported_not_raised():
     import urllib.error
 
     with patch(
-        "forgekey.core.hibp.urllib.request.urlopen",
+        "atalaya.core.hibp.urllib.request.urlopen",
         side_effect=urllib.error.URLError("no network"),
     ):
         result = hibp.check_password("whatever")

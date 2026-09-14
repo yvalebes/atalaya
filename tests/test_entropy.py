@@ -1,6 +1,6 @@
 import math
 
-from forgekey.core.entropy import bits_from_pool, bits_from_wordlist, rate
+from atalaya.core.entropy import bits_from_pool, bits_from_wordlist, rate
 
 
 def test_bits_from_pool_matches_formula():

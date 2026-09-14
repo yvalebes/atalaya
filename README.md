@@ -1,10 +1,10 @@
-# forgekey
+# atalaya
 
 Generador de contraseñas y passphrases criptográficamente seguro, con una
 consola de escritorio de estilo panel industrial y una CLI completa para
 scripting.
 
-> Añade aquí una captura de `forgekey-gui` una vez la ejecutes en tu máquina
+> Añade aquí una captura de `atalaya-gui` una vez la ejecutes en tu máquina
 > (`docs/screenshot-gui.png`) — se referencia más abajo en la sección de uso.
 
 ## Por qué existe esto
@@ -40,7 +40,7 @@ proyecto — no hay una sola llamada a `random` en el código de generación.
 Un error común al forzar "al menos un símbolo, un número..." es insertar esos
 caracteres obligatorios en posiciones fijas o predecibles (por ejemplo,
 siempre al final), lo cual reduce artificialmente la entropía real de esas
-posiciones. `forgekey` genera un carácter obligatorio por cada categoría
+posiciones. `atalaya` genera un carácter obligatorio por cada categoría
 activa, rellena el resto de la longitud eligiendo uniformemente de la unión
 de todas las categorías activas, y después aplica un **shuffle de
 Fisher-Yates** completo usando `secrets.randbelow()` como fuente de índices.
@@ -111,7 +111,7 @@ resultado.
 
 ### Historial cifrado (vault)
 
-forgekey puede recordar dónde y para qué usuario se generó cada contraseña,
+atalaya puede recordar dónde y para qué usuario se generó cada contraseña,
 sin caer en el error de guardarlas en texto plano:
 
 - **Sitio y usuario** se guardan sin cifrar — no son secretos por sí mismos
@@ -128,15 +128,15 @@ sin caer en el error de guardarlas en texto plano:
   verificación" cifrado con la misma clave: si no puede descifrarse, se
   rechaza la operación antes de tocar ninguna entrada real.
 
-El historial vive en `~/.forgekey/vault.json`. Sitio, usuario, fecha y
+El historial vive en `~/.atalaya/vault.json`. Sitio, usuario, fecha y
 entropía son legibles sin contraseña maestra desde la GUI o con
-`forgekey-history list`; revelar o copiar la contraseña real siempre la pide.
+`atalaya-history list`; revelar o copiar la contraseña real siempre la pide.
 
 ## Estructura del proyecto
 
 ```
-forgekey/
-├── src/forgekey/
+atalaya/
+├── src/atalaya/
 │   ├── core/
 │   │   ├── generator.py     # generación de contraseñas (secrets únicamente)
 │   │   ├── entropy.py       # cálculo de entropía en bits
@@ -163,8 +163,8 @@ forgekey/
 ## Instalación
 
 ```bash
-git clone https://github.com/<tu-usuario>/forgekey.git
-cd forgekey
+git clone https://github.com/yvalebes/atalaya.git
+cd atalaya
 python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
@@ -174,9 +174,9 @@ pip install -e .
 ## Uso — interfaz gráfica
 
 ```bash
-forgekey-gui
+atalaya-gui
 # o, sin instalar el paquete:
-python -m forgekey
+python -m atalaya
 ```
 
 La consola muestra en tiempo real la contraseña generada, un medidor de
@@ -189,31 +189,31 @@ junto al control.
 
 ```bash
 # Contraseña: 16 caracteres en 4 bloques, todas las categorías activas
-forgekey
+atalaya
 
 # Sin símbolos, excluyendo caracteres ambiguos
-forgekey --no-symbols --exclude-ambiguous
+atalaya --no-symbols --exclude-ambiguous
 
 # Passphrase Diceware de 8 palabras
-forgekey --passphrase --words 8
+atalaya --passphrase --words 8
 
 # Generar 5 contraseñas de golpe y copiar la primera al portapapeles
-forgekey --count 5 --copy
+atalaya --count 5 --copy
 
 # Comprobar exposición en filtraciones conocidas (opt-in)
-forgekey --check-pwned
+atalaya --check-pwned
 
 # Salida mínima para scripting (una contraseña por línea, sin metadatos)
-forgekey --count 10 --quiet
+atalaya --count 10 --quiet
 ```
 
 Ejemplo de salida:
 
 ```
-$ forgekey
+$ atalaya
 zz0D-d5BL-rNi!-p3GB   [104.6 bits | excelente]
 
-$ forgekey --passphrase --words 6
+$ atalaya --passphrase --words 6
 correa-abdomen-tundra-jinete-fibra-manto   [77.5 bits | muy fuerte]
 ```
 
@@ -230,16 +230,16 @@ Todas las flags disponibles: `--no-uppercase`, `--no-lowercase`,
 
 ```bash
 # Generar y guardar en el historial cifrado (pide la contrasena maestra)
-forgekey --save-site github.com --save-user mi_usuario
+atalaya --save-site github.com --save-user mi_usuario
 
 # Listar entradas (sitio, usuario, fecha, entropia — sin contrasena maestra)
-forgekey-history list
+atalaya-history list
 
 # Revelar y copiar la contrasena de una entrada (pide la contrasena maestra)
-forgekey-history show <id>
+atalaya-history show <id>
 
 # Eliminar una entrada
-forgekey-history delete <id>
+atalaya-history delete <id>
 ```
 
 Desde la GUI, el panel "GUARDAR EN HISTORIAL" hace lo mismo con un par de

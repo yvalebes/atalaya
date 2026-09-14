@@ -1,4 +1,4 @@
-"""Main window for the forgekey desktop console."""
+"""Main window for the atalaya desktop console."""
 
 from __future__ import annotations
 
@@ -27,17 +27,17 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-from forgekey.core import entropy, hibp, passphrase
-from forgekey.core.generator import PASSWORD_LENGTH, GeneratorOptions, generate_password
-from forgekey.core.vault import Vault, VaultNotInitialized, WrongMasterPassword
-from forgekey.gui.widgets import EntropyMeter, ToggleSwitch
+from atalaya.core import entropy, hibp, passphrase
+from atalaya.core.generator import PASSWORD_LENGTH, GeneratorOptions, generate_password
+from atalaya.core.vault import Vault, VaultNotInitialized, WrongMasterPassword
+from atalaya.gui.widgets import EntropyMeter, ToggleSwitch
 
 _MAX_MEANINGFUL_BITS = 130.0
 
 
 def _load_fonts() -> None:
     for name in ("JetBrainsMono-Regular.ttf", "JetBrainsMono-Bold.ttf"):
-        path = resources.files("forgekey.gui.assets").joinpath(name)
+        path = resources.files("atalaya.gui.assets").joinpath(name)
         with resources.as_file(path) as font_path:
             QFontDatabase.addApplicationFont(str(font_path))
 
@@ -159,7 +159,7 @@ class HistoryDialog(QDialog):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("FORGEKEY // consola de contrasenas")
+        self.setWindowTitle("ATALAYA // consola de contrasenas")
         self.setMinimumSize(760, 560)
 
         self._current_password = ""
@@ -200,7 +200,7 @@ class MainWindow(QMainWindow):
 
         text_col = QVBoxLayout()
         text_col.setSpacing(2)
-        title = QLabel("FORGEKEY")
+        title = QLabel("ATALAYA")
         title.setObjectName("BrandTitle")
         subtitle = QLabel("CONSOLA DE CONTRASENAS CRIPTOGRAFICAS - RNG SOLO CON SECRETS")
         subtitle.setObjectName("BrandSubtitle")
@@ -578,7 +578,7 @@ def run() -> None:
     app = QApplication.instance() or QApplication([])
     _load_fonts()
 
-    style_path = resources.files("forgekey.gui").joinpath("style.qss")
+    style_path = resources.files("atalaya.gui").joinpath("style.qss")
     with resources.as_file(style_path) as path:
         app.setStyleSheet(path.read_text(encoding="utf-8"))
 

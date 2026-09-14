@@ -6,12 +6,12 @@ import getpass
 
 import click
 
-from forgekey.core.vault import Vault, VaultNotInitialized, WrongMasterPassword
+from atalaya.core.vault import Vault, VaultNotInitialized, WrongMasterPassword
 
 
 @click.group()
 def history_cli() -> None:
-    """Gestiona el historial cifrado de contrasenas generadas con forgekey."""
+    """Gestiona el historial cifrado de contrasenas generadas con atalaya."""
 
 
 @history_cli.command("list")
