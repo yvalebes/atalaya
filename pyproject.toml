@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "forgekey"
+version = "1.0.0"
+description = "Generador de contraseñas y passphrases criptográficamente seguro, con GUI de consola industrial y CLI."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+authors = [{ name = "vabeba94" }]
+dependencies = [
+    "click>=8.1",
+    "PySide6>=6.6",
+    "pyperclip>=1.8",
+    "cryptography>=42.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+
+[project.scripts]
+forgekey = "forgekey.cli.main:main"
+forgekey-gui = "forgekey.gui.app:run"
+forgekey-history = "forgekey.cli.history:history_cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"forgekey.data" = ["*.txt"]
+"forgekey.gui" = ["*.qss"]
+"forgekey.gui.assets" = ["*.ttf"]

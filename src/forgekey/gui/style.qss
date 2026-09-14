@@ -1,0 +1,251 @@
+/* Industrial console theme — panels lit from a dark chassis, cyan telemetry
+   lines, safety-orange reserved for the one control that talks to the
+   outside world (the HIBP check). */
+
+* {
+    font-family: "JetBrains Mono";
+    color: #E4E7EB;
+    outline: none;
+}
+
+#Chassis {
+    background-color: #15171A;
+}
+
+QLabel {
+    background: transparent;
+}
+
+#BrandTitle {
+    color: #E4E7EB;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+#BrandSubtitle {
+    color: #5B646D;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+#SectionLabel {
+    color: #4FD1C5;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding-top: 4px;
+}
+
+#Panel {
+    background-color: #1C1F23;
+    border: 1px solid #2A2E33;
+}
+
+#ReadoutPanel {
+    background-color: #101214;
+    border: 1px solid #2A2E33;
+}
+
+#PasswordReadout {
+    color: #4FD1C5;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 14px 16px;
+    background: transparent;
+    border: none;
+}
+
+#EntropyValue {
+    color: #E4E7EB;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+#EntropyRatingLabel {
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+QSlider::groove:horizontal {
+    height: 4px;
+    background: #2A2E33;
+    border-radius: 0px;
+}
+
+QSlider::sub-page:horizontal {
+    background: #4FD1C5;
+}
+
+QSlider::handle:horizontal {
+    background: #E4E7EB;
+    width: 12px;
+    margin: -6px 0;
+    border: 1px solid #4FD1C5;
+}
+
+#LengthValue {
+    color: #4FD1C5;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+QCheckBox {
+    spacing: 10px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #C3C9D0;
+    padding: 3px 0;
+}
+
+QCheckBox::indicator {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #4A525A;
+    background: #101214;
+}
+
+QCheckBox::indicator:checked {
+    background: #4FD1C5;
+    border: 1px solid #4FD1C5;
+}
+
+QCheckBox#DangerCheck::indicator:checked {
+    background: #FF7A33;
+    border: 1px solid #FF7A33;
+}
+
+QCheckBox#DangerCheck {
+    color: #FF9E66;
+}
+
+QRadioButton {
+    spacing: 8px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #C3C9D0;
+}
+
+QRadioButton::indicator {
+    width: 12px;
+    height: 12px;
+    border: 1px solid #4A525A;
+    border-radius: 6px;
+    background: #101214;
+}
+
+QRadioButton::indicator:checked {
+    background: #4FD1C5;
+    border: 1px solid #4FD1C5;
+}
+
+QLineEdit {
+    background: #101214;
+    border: 1px solid #2A2E33;
+    padding: 6px 8px;
+    color: #E4E7EB;
+    font-size: 12px;
+}
+
+QLineEdit:focus {
+    border: 1px solid #4FD1C5;
+}
+
+QDialog, QMessageBox {
+    background-color: #15171A;
+}
+
+QTableWidget {
+    background: #101214;
+    border: 1px solid #2A2E33;
+    gridline-color: #2A2E33;
+    color: #E4E7EB;
+    font-size: 11px;
+    selection-background-color: #202B2A;
+    selection-color: #4FD1C5;
+}
+
+QHeaderView::section {
+    background: #1C1F23;
+    color: #4FD1C5;
+    padding: 6px;
+    border: none;
+    border-bottom: 1px solid #2A2E33;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+QSpinBox {
+    background: #101214;
+    border: 1px solid #2A2E33;
+    padding: 4px 6px;
+    color: #E4E7EB;
+    font-size: 12px;
+}
+
+QPushButton {
+    background: #1C1F23;
+    border: 1px solid #4A525A;
+    color: #E4E7EB;
+    padding: 10px 18px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+QPushButton:hover {
+    border: 1px solid #4FD1C5;
+    color: #4FD1C5;
+}
+
+QPushButton:pressed {
+    background: #101214;
+}
+
+#GenerateButton {
+    background: #1C1F23;
+    border: 1px solid #4FD1C5;
+    color: #4FD1C5;
+}
+
+#GenerateButton:hover {
+    background: #202B2A;
+}
+
+#CopyButton {
+    border: 1px solid #2A2E33;
+}
+
+#StatusStrip {
+    color: #5B646D;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+#StatusStrip[state="ok"] {
+    color: #6FCF97;
+}
+
+#StatusStrip[state="warn"] {
+    color: #FF9E66;
+}
+
+#StatusStrip[state="danger"] {
+    color: #FF5C5C;
+}
+
+QScrollBar:vertical {
+    background: #15171A;
+    width: 8px;
+}
+
+QScrollBar::handle:vertical {
+    background: #2A2E33;
+    min-height: 24px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}
